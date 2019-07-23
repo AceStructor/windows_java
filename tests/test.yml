@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: servers
   roles:
-    - javaupgrade
+    - role: rishihegde.windows_java
+      vars:
+        repository_path: \\127.0.0.1

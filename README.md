@@ -1,6 +1,6 @@
 # Ansible Role: windows_java
 
-Ansible role to upgrade JRE/JDK to latest version. Tasks in this role will do the following.
+Ansible role to upgrade JRE/JDK to version 8 Update 221. Tasks in this role will do the following.
 
 1. Log information about existing versions of Java (jre/jdk) under C:\JavaPreviousVersions.txt
 2. Uninstall all existing versions of Java (jre/jdk) from the target machine
@@ -14,11 +14,11 @@ Requirements
 ------------
 This role assumes that there is a central repository where the downloaded packages of the latest versions are present. Below is the folder structure:
 
-`\\your_repository_name\jdk\jdk8_181_64.exe` and `\\your_repository_name\jdk\jdk8_181_32.exe`
+`\\your_repository_name\jdk\jdk8_221_64.exe` and `\\your_repository_name\jdk\jdk8_221_32.exe`
 
-`\\your_repository_name\jre\jre-8u181-windows-x64.msi` and `\\your_repository_name\jre\jre-8u181-windows-i586.msi`
+`\\your_repository_name\jre\jre-8u221-windows-x64.msi` and `\\your_repository_name\jre\jre-8u221-windows-i586.msi`
 
-Make sure to replace all occurences of "your_repository_name" with the server name or ip address of the windows share inside the tasks/main.yml
+*Make sure to set the variable "repository_path" as the path to your repo, the role otherwise wouldn't work.*
 
 Role Variables
 --------------
@@ -57,18 +57,26 @@ Example Playbook
         - hosts: servers
           roles:
             - role: rishihegde.windows_java
+              vars:
+                repository_path: \\127.0.0.1
 
 *Use tags to only install specific versions or only uninstall*
 
         ---
         - hosts: servers
           roles:
-            - { role: rishihegde.windows_java, tags: ['uninstall'] }
+            - role: rishihegde.windows_java
+              tags: ['uninstall']
+              vars:
+                repository_path: \\127.0.0.1
 
         ---
         - hosts: servers
           roles:
-            - { role: rishihegde.windows_java, tags: ['uninstall','64_jdk'] }
+            - role: rishihegde.windows_java
+              tags: ['uninstall','64_jdk']
+              vars:
+                repository_path: \\127.0.0.1
 
 
 *Available tags*
