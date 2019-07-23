@@ -16,7 +16,7 @@ _64_jre_package_path: C:\temp\jre\jre-8u221-windows-x64.msi
 _32_jre_package_path: C:\temp\jre\jre-8u221-windows-i586.msi
 
 # used for creates_path. This allows installation of packages without knowing the product_id
-_64jdk: C:\Program Files\Java\jdk
-_64jre: C:\Program Files\Java\jre
-_32jdk: C:\Program Files (x86)\Java\jdk
-_32jre: C:\Program Files (x86)\Java\jre
+_64jdk: C:\Program Files\Java\jdk1.8.0_221
+_64jre: C:\Program Files\Java\jre1.8.0_221
+_32jdk: C:\Program Files (x86)\Java\jdk1.8.0_221
+_32jre: C:\Program Files (x86)\Java\jre1.8.0_221

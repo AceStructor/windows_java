@@ -30,10 +30,10 @@ Role Variables
 *complete path of packages on the target machines after they have been copied*
 
 	---
-	_64_jdk_package_path: C:\temp\jdk\jdk8_181_64.exe
-	_32_jdk_package_path: C:\temp\jdk\jdk8_181_32.exe
-	_64_jre_package_path: C:\temp\jre\jre-8u181-windows-x64.msi
-	_32_jre_package_path: C:\temp\jre\jre-8u181-windows-i586.msi
+	_64_jdk_package_path: C:\temp\jdk\jdk8_221_64.exe
+	_32_jdk_package_path: C:\temp\jdk\jdk8_221_32.exe
+	_64_jre_package_path: C:\temp\jre\jre-8u221-windows-x64.msi
+	_32_jre_package_path: C:\temp\jre\jre-8u221-windows-i586.msi
 
 *used for creates_path. This allows installation of packages without knowing the product_id*
 
@@ -74,18 +74,15 @@ Example Playbook
         - hosts: servers
           roles:
             - role: rishihegde.windows_java
-              tags: ['uninstall','64_jdk']
+              tags: ['uninstall','jdk']
               vars:
                 repository_path: \\127.0.0.1
 
 
 *Available tags*
 1. uninstall - only uninstalls all versions of jre/jdk that currently exists on the target machine
-2. jdk_both - only installs 64bit and 32bit version of JDK
-3. 64_jdk - only installs 64bit JDK
-4. 32_jdk - only installs 32bit JDK
-5. 64_jre - only installs 64bit JRE
-6. 32_jre - only installs 32bit JRE
+2. jdk - installs jdk in 32 Bit and 64 Bit if the System is 64 Bit
+3. jre - installs jre in 32 Bit and 64 Bit if the System is 64 Bit
 
 License
 -------
